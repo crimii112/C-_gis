@@ -108,41 +108,48 @@ namespace Gis
         /* 측정소 상세 정보 화면에 표출하는 함수 */
         public void DisplayStationDetail(Dictionary<string, object> data)
         {
-            tblDetail.Controls.Clear();
-            tblDetail.RowStyles.Clear();
-            tblDetail.RowCount = 0;
-            tblDetail.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tblDetail.AutoSize = true;
-          
+            gridDetail.SuspendLayout();
+
+            gridDetail.Rows.Clear();
+            gridDetail.Columns.Clear();
+
+            // 열 구성
+            gridDetail.Columns.Add("Key", "Key");
+            gridDetail.Columns.Add("Value", "Value");
+
+            gridDetail.Columns[0].DefaultCellStyle.Font = new Font("맑은 고딕", 9, FontStyle.Bold);
+            gridDetail.Columns[1].DefaultCellStyle.Font = new Font("맑은 고딕", 9);
+            gridDetail.DefaultCellStyle.Padding = new Padding(5);
+            gridDetail.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            gridDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridDetail.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            gridDetail.ColumnHeadersVisible = false;
+            gridDetail.RowHeadersVisible = false;
+            gridDetail.ReadOnly = true;
+            gridDetail.AllowUserToAddRows = false;
+            gridDetail.AllowUserToResizeRows = false;
+            gridDetail.AllowUserToResizeColumns = false;
+            gridDetail.ScrollBars = ScrollBars.None;
+            gridDetail.BorderStyle = BorderStyle.None;
+
             foreach (var kvp in data)
             {
-                int rowIndex = tblDetail.RowCount++;
-                tblDetail.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-
-                var keyLabel = new Label
-                {
-                    Text = kvp.Key,
-                    AutoSize = true,
-                    Font = new Font("맑은 고딕", 9, FontStyle.Bold),
-                    Padding = new Padding(5),
-                    Dock = DockStyle.Fill,
-                    TextAlign = ContentAlignment.MiddleLeft,
-                };
-
-                var valueLabel = new Label
-                {
-                    Text = kvp.Value?.ToString(),
-                    AutoSize = true,
-                    Font = new Font("맑은 고딕", 9),
-                    Padding = new Padding(5),
-                    Dock = DockStyle.Fill,
-                    TextAlign = ContentAlignment.MiddleCenter,
-                };
-
-                tblDetail.Controls.Add(keyLabel, 0, rowIndex);
-                tblDetail.Controls.Add(valueLabel, 1, rowIndex);
+                gridDetail.Rows.Add(kvp.Key, kvp.Value?.ToString());
             }
+
+            gridDetail.ClearSelection();
+            gridDetail.Dock = DockStyle.Top;
+
+            int totalHeight = gridDetail.ColumnHeadersHeight;
+            foreach (DataGridViewRow row in gridDetail.Rows)
+                totalHeight += row.Height;
+
+            gridDetail.Height = totalHeight;
+
+            gridDetail.ResumeLayout();
+    
         }
+
     }
 
     public class JsBridge
