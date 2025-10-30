@@ -31,16 +31,18 @@
             this.btnExecuteDos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.txtCommand = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.comboCommand = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExecuteDos
             // 
-            this.btnExecuteDos.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnExecuteDos.Location = new System.Drawing.Point(3, 470);
+            this.btnExecuteDos.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExecuteDos.Location = new System.Drawing.Point(663, 0);
             this.btnExecuteDos.Name = "btnExecuteDos";
-            this.btnExecuteDos.Size = new System.Drawing.Size(60, 23);
+            this.btnExecuteDos.Size = new System.Drawing.Size(60, 24);
             this.btnExecuteDos.TabIndex = 0;
             this.btnExecuteDos.Text = "실행";
             this.btnExecuteDos.UseVisualStyleBackColor = true;
@@ -51,47 +53,57 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.txtOutput, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnExecuteDos, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtCommand, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.056452F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.94355F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 496);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(729, 511);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txtOutput
             // 
             this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOutput.Location = new System.Drawing.Point(3, 36);
+            this.txtOutput.Location = new System.Drawing.Point(3, 33);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutput.Size = new System.Drawing.Size(894, 428);
+            this.txtOutput.Size = new System.Drawing.Size(723, 475);
             this.txtOutput.TabIndex = 1;
             // 
-            // txtCommand
+            // panel1
             // 
-            this.txtCommand.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCommand.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtCommand.Location = new System.Drawing.Point(3, 6);
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.ReadOnly = true;
-            this.txtCommand.Size = new System.Drawing.Size(100, 21);
-            this.txtCommand.TabIndex = 2;
+            this.panel1.Controls.Add(this.comboCommand);
+            this.panel1.Controls.Add(this.btnExecuteDos);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(723, 24);
+            this.panel1.TabIndex = 2;
+            // 
+            // comboCommand
+            // 
+            this.comboCommand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboCommand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCommand.FormattingEnabled = true;
+            this.comboCommand.Location = new System.Drawing.Point(0, 0);
+            this.comboCommand.Name = "comboCommand";
+            this.comboCommand.Size = new System.Drawing.Size(663, 20);
+            this.comboCommand.TabIndex = 1;
             // 
             // Dos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 496);
+            this.ClientSize = new System.Drawing.Size(729, 511);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Dos";
+            this.Load += new System.EventHandler(this.Dos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -101,6 +113,7 @@
         private System.Windows.Forms.Button btnExecuteDos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.TextBox txtCommand;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comboCommand;
     }
 }
